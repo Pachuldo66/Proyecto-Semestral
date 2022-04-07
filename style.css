@@ -1,0 +1,27 @@
+.vertical-menu {
+    
+    width: 100px; 
+    height: 600px;
+    display: flexbox;
+    flex-direction: column;
+    align-content: space-between;
+  }
+  
+  .vertical-menu a {
+     
+    background-color: #eee;
+    height: 25%;
+  
+    color: black; 
+    display: block; 
+   
+    text-decoration: none; 
+  }
+  
+  .vertical-menu a:hover {
+    background-color: #ccc; 
+  }
+  
+  .vertical-menu a img{
+      padding: 20px;
+  }
