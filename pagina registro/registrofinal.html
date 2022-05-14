@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <title>Registro</title>
+
+    <script>
+        $(document).ready(
+            function(){
+                var mensaje = "";
+ 
+                $("#alertaNombre").hide();
+                $("#alertaEmail").hide();
+                $("#alertaTelefono").hide();
+                $("#alertaComentario").hide();
+ -
+                $("#nombre").focusout(function(){
+                    if ($("#nombre").val().trim().length == 0) {
+                        mensaje = "Debe ingresar el nombre";
+                        $("#alertaNombre").html(mensaje);
+                        $("#alertaNombre").show();
+                    } else {
+                        $("#alertaNombre").hide();
+                    }
+                });
+ 
+                $("#formulario").submit(function(){
+                    if ($("#nombre").val().trim().length == 0) {
+                        alert("debe ingresar el nombre");
+                        event.preventDefault();
+                    }
+                });
+
+                $("#email").focusout(function(){
+                    if ($("#email").val().trim().length == 0) {
+                        mensaje = "Debe ingresar un email";
+                        $("#alertaEmail").html(mensaje);
+                        $("#alertaEmail").show();
+                    } else {
+                        $("#alertaEmail").hide();
+                    }
+                });
+ 
+                $("#formulario").submit(function(){
+                    if ($("#email").val().trim().length == 0) {
+                        alert("Debe ingresar un email");
+                        event.preventDefault();
+                    }
+                });
+
+                $("#telefono").focusout(function(){
+                    if ($("#telefono").val().trim().length == 12) {
+                        $("#alertaTelefono").hide();
+                    } else {
+                        mensaje = "Su telefono debe contener 8 digitos";
+                        $("#alertaTelefono").html(mensaje);
+                        $("#alertaTelefono").show();
+                    }
+                });
+
+                $("#comentario").focusout(function(){
+                    if ($("#comentario").val().trim().length < 50) {
+                        mensaje = "Su comentario debe contener al menos 50 caracteres";
+                        $("#alertaComentario").html(mensaje);
+                        $("#alertaComentario").show();
+                    } else {
+                        $("#alertaComentario").hide();
+                    }
+                });
+
+                $("#formulario").submit(function(){
+                    if ($("#comentario").val().trim().length < 50) {
+                        alert("Su comentario debe contener al menos 50 caracteres");
+                        event.preventDefault();
+                    }
+                });
+            }
+ 
+        );
+    </script>
+    <script>
+        /// aqui empieza el registro del usuario/Script JS
+    var Fn = {
+        // Valida el rut con su cadena completa "XXXXXXXX-X"
+        validaRut : function (rutCompleto) {
+            if (!/^[0-9]+[-|‐]{1}[0-9kK]{1}$/.test( rutCompleto ))
+                return false;
+            var tmp = rutCompleto.split('-');
+            var digv = tmp[1]; 
+            var rut = tmp[0];
+            if ( digv == 'K' ) digv = 'k' ;
+            return (Fn.dv(rut) == digv );
+        },
+        dv : function(T){
+            var M=0,S=1;
+            for(;T;T=Math.floor(T/10))
+                S=(S+T%10*(9-M++%6))%11;
+            return S?S-1:'k';
+        },
+        LimpiarFormulario : function(){
+            document.getElementById(rutCompleto).reset();
+        }
+    }
+    // Uso de la función
+    alert( Fn.validaRut('11111111-1') ? 'Valido' : 'inválido');
+    // Fin del Script
+</script>
+
+</head>
+<body>
+    
+    <center><H1>Registro</H1></center>
+
+    <div class="container">
+        <div class="row">
+            <!---Aqui empieza lo que hizo la Ali-->
+            <form action="" method="post" id="formulario">
+                <div class="alert alert-danger" role="alert" id="alertaNombre">
+                    Error!
+                  </div>
+                <div class="form-group">
+                    <label for="nombre">Nombre Completo *</label>
+                    <input type="text" id="nombre" class="form-control">
+                </div>
+                <div class="alert alert-danger" role="alert" id="alertaRut">
+                    Error!
+                  </div>
+                <div class="form-group">
+                    <label for="nombre">RUT *</label>
+                    <input type="text" id="rutCompleto" name="rut" placeholder="Ingrese su RUT" class="form-control">
+                </div>
+                <div class="alert alert-danger" role="alert" id="alertaEmail">
+                    Error!
+                  </div>
+                <div class="form-group">
+                    <label for="email">Email *</label>
+                    <input type="email" id="email" class="form-control">
+                </div>
+                <div class="alert alert-danger" role="alert" id="alertaTelefono">
+                    Error!
+                  </div>
+                <div class="form-group">
+                    <label for="telefono">Telefono</label>
+                    <input type="tel" id="telefono" class="form-control" placeholder="+569XXXXXXX">
+                </div>
+                <div class="form-group">
+                    <label for="ciudad">Ciudad Residencia *</label>
+                    <input type="text" id="ciudad" class="form-control">
+                </div>
+                <div class="alert alert-danger" role="alert" id="alertaComentario">
+                    Error!
+                  </div>
+                <div class="form-group">
+                    <label for="comentario">Comentarios o sugerencias *</label>
+                    <h1> </h1>
+                    <textarea name="comentario" id="comentario" rows="7" cols="90%" placeholder="Escriba aqui sus comentarios."></textarea>
+                </div>
+
+                <input type="submit" value="Enviar" class="btn btn-primary" id="Enviar">
+                <input type="reset" value="Limpiar" class="btn btn-danger">
+            </form>
+ 
+ 
+        </div>
+    </div>
+   
+</body>
+</html>
