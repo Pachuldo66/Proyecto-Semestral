@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Consume Web Service</title>
+    <script>
+        fetch('http://api.weatherstack.com/')
+        .then((respuesta) => {
+            return respuesta.json();
+        })
+        .then((respuesta) => {
+            document.getElementById('Peticion').value = respuesta.request.type;
+            document.getElementById('Ubicacion').value = respuesta.location.name;
+            document.getElementById('Estado Actual').value = respuesta.current.observation_time;
+            document.getElementById('Icon').value = respuesta.weather_icons;//aqui deberia insertar la imagen
+            const image =document.createElement('img');
+            image.src = 'https://assets.weatherstack.com/images/wsymbols01_png_64/wsymbol_0017_cloudy_with_light_rain.png'
+            document.getElementById('Descripcion del Clima').value = respuesta.weather_descriptions;
+        })
+            ?accces_key = c9b96d31364a0f621641b243ae63d4a1
+            & query == Santiago
+    //parametros opcionales
+            &units == m
+            &language == en
+        
+    </script>
+</head>
+<body>
+    <div id="informacion">
+        <input type="text" id="Peticion" value="Cargando.....Espere, porfavor :)">
+        <input type="text" id="Ubicacion" value="Cargando.....Espere, porfavor :)">
+        <input type="text" id="Estado Actual" value="Cargando.....Espere, porfavor :)">
+        <input type="text" id="Icon" value="Cargando.....Espere, porfavor :)">
+        <input type="text" id="Descripcion del Clima" value="Cargando.....Espere, porfavor :)">
+    </div>
+</body>
+</html>             
