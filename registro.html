@@ -18,6 +18,7 @@
                 $("#alertaEmail").hide();
                 $("#alertaTelefono").hide();
                 $("#alertaComentario").hide();
+                $("#alertaRut").hide();
  -
                 $("#nombre").focusout(function(){
                     if ($("#nombre").val().trim().length == 0) {
@@ -63,6 +64,20 @@
                     }
                 });
 
+                //$("#telefono").submit(function(){
+                //    if ($("#telefono").val().trim().length != 0) {
+                //        if ($("#telefono").val().trim().length < 12) {
+                //            alert("el telefono ingresado debe contener 8 digitos");
+                //            event.preventDefault();
+                //        } else{
+                //            if ($("#telefono").val().trim().length > 12) {
+                //                alert("el telefono ingresado debe contener 8 digitos");
+                //                event.preventDefault();
+                //            }
+                //        }
+                //    }
+                //});
+
                 $("#comentario").focusout(function(){
                     if ($("#comentario").val().trim().length < 50) {
                         mensaje = "Su comentario debe contener al menos 50 caracteres";
@@ -79,9 +94,52 @@
                         event.preventDefault();
                     }
                 });
+
+                $("#rut").focusout(function(){
+                    if ($("#rut").val().trim().length == 0) {
+                        mensaje = "Debe ingresar un rut";
+                        $("#alertaRut").html(mensaje);
+                        $("#alertaRut").show();
+                    } else {
+                        $("#alertaRut").hide();
+                    }
+                });
+
+                var Fn = {
+                    // Valida el rut con su cadena completa "XXXXXXXX-X"
+                    validaRut : function (rutCompleto) {
+                        rutCompleto = rutCompleto.replace("‐","-");
+                        if (!/^[0-9]+[-|‐]{1}[0-9kK]{1}$/.test( rutCompleto ))
+                            return false;
+                        var tmp 	= rutCompleto.split('-');
+                        var digv	= tmp[1]; 
+                        var rut 	= tmp[0];
+                        if ( digv == 'K' ) digv = 'k' ;
+                        
+                        return (Fn.dv(rut) == digv );
+                    },
+                    dv : function(T){
+                        var M=0,S=1;
+                        for(;T;T=Math.floor(T/10))
+                            S=(S+T%10*(9-M++%6))%11;
+                        return S?S-1:'k';
+                    }
+                }
+
+
+                $("#Enviar").click(function(){
+                    if (Fn.validaRut( $("#rut").val() )){
+                        
+                    } else{
+                        alert("El rut ingresado no es valido");
+                        event.preventDefault();
+                    }
+                });
             }
  
         );
+
+        
     </script>
 
 </head>
@@ -106,6 +164,13 @@
                 <div class="form-group">
                     <label for="email">Email *</label>
                     <input type="email" id="email" class="form-control">
+                </div>
+                <div class="alert alert-danger" role="alert" id="alertaRut">
+                    Error!
+                  </div>
+                <div id="wrapper">
+                    <label for="rut">Rut Completo*</label>
+                    <input type="text" class="form-control" placeholder="Rut, ej:11111111-1" aria-describedby="sizing-addon1" id="rut">
                 </div>
                 <div class="alert alert-danger" role="alert" id="alertaTelefono">
                     Error!
