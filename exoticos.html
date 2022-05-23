@@ -13,21 +13,39 @@
 <body>
     <script>
        $(document).ready(function(){
-            //se le asigna una funcion anonima al boton con el id peticion
-            //$("#peticion").click(function(){
+            cargarAnimales();                     
+        });
+        function cargarAnimales(){
+            //var urlApi="https://zoo-animal-api.herokuapp.com/animals/rand/"
                 $.get("https://zoo-animal-api.herokuapp.com/animals/rand/10",function(data){
-                    console.log("que es eso",data);
-                    
-                       
-                            //$("#tabla").append("<tr> <td>"+data.name+"</td> <td>"+data.habitat+"</td> <td> <img src='"+data.image_link+"'></td> <td>"+data.geo_range+"</td> </tr>")
+                    //console.log("que es eso",data);
+                    $.each(data, function(i, elemento){
+                        $("#misCartas").append(`
+                                <div id="cartas" class="card" style="width: 18rem;">
+                                    <img src="${elemento.image_link}" class="card-img-top" alt="...">
+                                    <div class="card-body">
+                                        <h5 class="card-title">  ${elemento.name}</h5>
+                                        <p class="card-text">Tipo: ${elemento.animal_type}</p>
+                                        <p class="card-text">Habitad: ${elemento.habitat}</p>
+                                        <p class="card-text">Localizacion: ${elemento.geo_range}</p>
+                                        <p class="card-text">Dieta: ${elemento.diet}</p>
+                                    
+                                    </div>
+                                </div>
 
-                        $.each(data,function(i, item){
-                            $("#tabla").append("<tr> <td> <img  src='"+item.image_link+"'  ></td> <td>"+item.name+"</td> <td>"+item.habitat+"</td>  <td>"+item.geo_range+"</td> </tr>")
+                             ` );
+
+                        //console.log("elemento aquí",elemento);
+                        //$.get(elemento, function(dataAnimales){
+                          //  console.log("data anmales aquí",dataAnimales)
                             
-                          });
-                    });
-                    //$('#img-animals').width('150px');
+
+                       // })
+
+                    })
+                    
                 });
+            }; 
               
     </script>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -69,38 +87,9 @@
           </div>
         </div>
       </nav>
-      <!--inicio de menu vertical-->
-      <div class="d-flex flex-row">
-        <div class="vertical-menu">
-            <a href="gato.html">
-           <img src="./img-menu/cat.svg" alt="">
-            </a>               
-            <a href="perro.html">
-             <img src="./img-menu/dog.svg" alt="">
-            </a>
-            <a href="pajaros.html">
-              <img src="./img-menu/crow.svg" alt="">
-            </a>
-            <a href="exoticos.html">
-              <img src="./img-menu/worm.svg" alt="">
-            </a>
-          </div>
-          <table class="table" id="tabla">
-            <thead>
-              <tr>
-                <th scope="col" id="img-animals">Imagen</th>
-                <th scope="col">Nombre</th>
-                <th scope="col">Habitad</th>
-                
-                <th scope="col">Localizacion</th>
-              </tr>
-            </thead>
-            <tbody>
-              
 
-            </tbody>
-          </table>
-      </div>
+      <div class="d-flex flex-row flex-wrap" id="misCartas"></div>
+         
       
       <!--<script src="app.js"></script>-->
 </body>
