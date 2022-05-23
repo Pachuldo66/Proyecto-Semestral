@@ -168,6 +168,18 @@
   padding-left: 7px;
   padding-right: 7px;
 }
+#caja1, #caja2, #caja3{
+  /*background-color: rgba(137, 245, 253, 0.608);*/
+  margin: 5px;
+  max-width: 100px;
+  max-height: 50px;
+}
+#contenerdor-Clima{
+  max-height: 50px;
+}
+#icono-animado{
+  width: 60px;
+}
 
 #ver{
   width: 30%;
