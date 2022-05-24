@@ -40,7 +40,7 @@
                   Usuario
                 </a>
                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                  <li><a class="dropdown-item" href="#">Iniciar Sesion</a></li>
+                  <li><a class="dropdown-item" href="inicio_sesion.html">Iniciar Sesion</a></li>
                   <li><a class="dropdown-item" href="registro.html">Registrarse</a></li>
                   <li><hr class="dropdown-divider"></li>
                   <li><a class="dropdown-item" href="home.html">Cerrar Sesion</a></li>
@@ -92,6 +92,40 @@
             <a href="pajaros.html"><img src="./img-menu/crow.svg" alt=""></a>
             <a href="exoticos.html"><img src="./img-menu/worm.svg" alt=""></a>
         </div>
+
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Datos Producto</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                <div>
+                  <img src= "https://ae01.alicdn.com/kf/S8b05cf672b534a07b3b8dc2df25df889H/Cama-para-perros-grandes-y-gatos-productos-para-mascotas-esterilla-banco-sof-suministros-accesorios-para-casa.jpg_Q90.jpg_.webp" class= "card-img-top" alt= "cama" id="cardImage">
+                  <p class="title">Cama</p>
+                  <p>Este producto es para perros, hay de color cafe,rosa y negro con estampado de perritos. Tenemos de tamaño extra grande en este momento</p>
+                </div>
+
+              </div>
+              <div class="modal-footer">
+                <div class="productQuantity quantitiesContainer">
+                  <p> <input type="number" min="1" max="99" number="number" name="quantity[4007221035916]" value="1" oninput="if (!window.__cfRLUnblockHandlers) return false; javascript: if (this.value.length > 2) this.value = this.value.slice(0, 2);" onchange="if (!window.__cfRLUnblockHandlers) return false; ShopCart.setItem('4007221035916', this.value, ShopCart.updateCart);" id="quantity[4007221035916]" autocomplete="off" class="filled">
+                  <input type="hidden" name="max_units[4007221035916]" id="max_units[4007221035916]" value="2394" autocomplete="off" class="filled">
+                  </p>
+
+
+                </div>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                <button type="button" class="btn btn-light"><a href="carrito.html"><img src="cart-plus-solid.svg" alt="" width="25px"></a></button>
+              </div>
+                
+              </div>
+            </div>
+          </div>
+        </div>
+
          <!--productos------------------------------------------------------------------------------------->
          <div class="container">
           <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
@@ -104,7 +138,7 @@
                     <p class="card-title"> $10.000</p>
                     <br>
                     <div class="d-flex justify-content-between pt-1">
-                      <button type="button" class="btn btn-success" id="ver">Ver</button>
+                      <button type="button" class="btn btn-success" id="ver" data-bs-toggle="modal" data-bs-target="#exampleModal">Ver</button>
                       <div class="d-flex justify-content-end">
                         <button type="button" class="btn btn-outline-danger" id="menos">-</button>
                         <p  style="margin: 3%;" id="cantidad">0</p>
@@ -125,7 +159,7 @@
                     <p class="card-title"> $10.000</p>
                     <br>
                     <div class="d-flex justify-content-between pt-1">
-                      <button type="button" class="btn btn-success" id="ver">Ver</button>
+                      <button type="button" class="btn btn-success" id="ver" data-bs-toggle="modal" data-bs-target="#exampleModal">Ver</button>
                       <div class="d-flex justify-content-end">
                         <button type="button" class="btn btn-outline-danger" id="ver">-</button>
                         <p  id="num"> 2</p>
@@ -146,7 +180,7 @@
                     <p class="card-title"> $10.000</p>
                     <br>
                     <div class="d-flex justify-content-between pt-1">
-                      <button type="button" class="btn btn-success" id="ver">Ver</button>
+                      <button type="button" class="btn btn-success" id="ver" data-bs-toggle="modal" data-bs-target="#exampleModal">Ver</button>
                       <div class="d-flex justify-content-end">
                         <button type="button" class="btn btn-outline-danger" id="ver">-</button>
                         <p  id="num"> 2</p>
@@ -168,7 +202,7 @@
                     <p class="card-title"> $10.000</p>
                     <br>
                     <div class="d-flex justify-content-between pt-1">
-                      <button type="button" class="btn btn-success" id="ver">Ver</button>
+                      <button type="button" class="btn btn-success" id="ver" data-bs-toggle="modal" data-bs-target="#exampleModal">Ver</button>
                       <div class="d-flex justify-content-end">
                         <button type="button" class="btn btn-outline-danger" id="ver">-</button>
                         <p  id="num"> 2</p>
@@ -190,7 +224,7 @@
                     <p class="card-title"> $10.000</p>
                     <br>
                     <div class="d-flex justify-content-between pt-1">
-                      <button type="button" class="btn btn-success" id="ver">Ver</button>
+                      <button type="button" class="btn btn-success" id="ver" data-bs-toggle="modal" data-bs-target="#exampleModal">Ver</button>
                       <div class="d-flex justify-content-end">
                         <button type="button" class="btn btn-outline-danger" id="ver">-</button>
                         <p  id="num"> 2</p>
@@ -212,7 +246,7 @@
                     <p class="card-title"> $10.000</p>
                     <br>
                     <div class="d-flex justify-content-between pt-1">
-                      <button type="button" class="btn btn-success" id="ver">Ver</button>
+                      <button type="button" class="btn btn-success" id="ver" data-bs-toggle="modal" data-bs-target="#exampleModal">Ver</button>
                       <div class="d-flex justify-content-end">
                         <button type="button" class="btn btn-outline-danger" id="ver">-</button>
                         <p  id="num"> 2</p>
@@ -234,7 +268,7 @@
                     <p class="card-title"> $10.000</p>
                     <br>
                     <div class="d-flex justify-content-between pt-1">
-                      <button type="button" class="btn btn-success" id="ver">Ver</button>
+                      <button type="button" class="btn btn-success" id="ver" data-bs-toggle="modal" data-bs-target="#exampleModal">Ver</button>
                       <div class="d-flex justify-content-end">
                         <button type="button" class="btn btn-outline-danger" id="ver">-</button>
                         <p  id="num"> 2</p>
@@ -255,7 +289,7 @@
                     <p class="card-title"> $10.000</p>
                     <br>
                     <div class="d-flex justify-content-between pt-1">
-                      <button type="button" class="btn btn-success" id="ver">Ver</button>
+                      <button type="button" class="btn btn-success" id="ver" data-bs-toggle="modal" data-bs-target="#exampleModal">Ver</button>
                       <div class="d-flex justify-content-end">
                         <button type="button" class="btn btn-outline-danger" id="ver">-</button>
                         <p  id="num"> 2</p>
@@ -276,7 +310,7 @@
                     <p class="card-title"> $10.000</p>
                     <br>
                     <div class="d-flex justify-content-between pt-1">
-                      <button type="button" class="btn btn-success" id="ver">Ver</button>
+                      <button type="button" class="btn btn-success" id="ver" data-bs-toggle="modal" data-bs-target="#exampleModal">Ver</button>
                       <div class="d-flex justify-content-end">
                         <button type="button" class="btn btn-outline-danger" id="ver">-</button>
                         <p  id="num"> 2</p>
@@ -297,7 +331,7 @@
                     <p class="card-title"> $10.000</p>
                     <br>
                     <div class="d-flex justify-content-between pt-1">
-                      <button type="button" class="btn btn-success" id="ver">Ver</button>
+                      <button type="button" class="btn btn-success" id="ver" data-bs-toggle="modal" data-bs-target="#exampleModal">Ver</button>
                       <div class="d-flex justify-content-end">
                         <button type="button" class="btn btn-outline-danger" id="restar">-</button>
                         <p  id="num"> 2</p>
